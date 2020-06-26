@@ -21,7 +21,8 @@ namespace OdeToFood.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //??? Also add this configuration RegisterContainer() here to be called during app start.
-            ContainerConfig.RegisterContainer();
+            //??? Modified bc we are working with two different frameworks; MVC FW and WebApi FW.
+            ContainerConfig.RegisterContainer(GlobalConfiguration.Configuration);
             
         }
     }

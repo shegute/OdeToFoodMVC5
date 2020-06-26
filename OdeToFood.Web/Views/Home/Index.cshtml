@@ -6,15 +6,17 @@
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
-    <div>There are @Model.Count() restauratns</div>
+    <div>There are @Model.Count() restaurants</div>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
-<ul>
-    <h2>Resturaants     </h2>
-@foreach (var rest in Model)
-{ <li>@rest.Name</li>}
-</ul>
+
+@*//???Just show the count for now.
+    <ul>
+        <h2>Resturaants     </h2>
+            @foreach (var rest in Model)
+            { <li>@rest.Name</li>}
+    </ul>*@
 
 <div class="row">
     <div class="col-md-4">
