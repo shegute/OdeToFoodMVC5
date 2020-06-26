@@ -11,6 +11,7 @@ namespace OdeToFood.Data.Models
         //??? This is another way to dictate that new Restauratn being created is required
         // to have a value for Name property.
         [Required]
+        //[MaxLength(255)]
         public string Name { get; set; }
 
 

@@ -81,10 +81,31 @@ namespace OdeToFood.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 db.Update(restaurant);
                 return RedirectToAction("Details", new { id = restaurant.Id });
             }
             return View(restaurant);
+        }
+
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var model = db.Get(id);
+            if (model == null)
+            {
+                return View("NotFound");
+            }
+            return View(model);
+        }
+        //??? HttpDelete is not too common since browsers send get and post, the rest like HttpDelete are used in WebApis.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, FormCollection form)
+        {
+            db.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }

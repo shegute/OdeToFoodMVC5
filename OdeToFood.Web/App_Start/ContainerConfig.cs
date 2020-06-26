@@ -22,10 +22,16 @@ namespace OdeToFood.Web
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             //??? Modified bc we are working with two different frameworks; MVC FW and WebApi FW.
             builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
-            //??? Register all InMemRestData as the type for interface IRestauratnData
-            builder.RegisterType<InMemoryRestaurantData>()
+            //??? Register InMemoryRestaurantData as the type for interface IRestaurantData
+            //builder.RegisterType<InMemoryRestaurantData>()
+            //    .As<IRestaurantData>()
+            //    .SingleInstance();
+            //??? Register all SqlRestaurantData as the type for interface IRestaurantData
+            builder.RegisterType<SqlRestaurantData>()
                 .As<IRestaurantData>()
-                .SingleInstance();
+                .InstancePerRequest();
+            builder.RegisterType<OdeToFoodDbContext>().InstancePerRequest();
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             //??? Modified bc we are working with two different frameworks; MVC FW and WebApi FW.
