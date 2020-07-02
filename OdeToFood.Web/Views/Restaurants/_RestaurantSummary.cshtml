@@ -1,0 +1,17 @@
+﻿@*???We are adding a partial view that can be reused inside another view.
+    We have created this file inside the Restaurants folder so only views inside this folder can use it.
+    If we had wanted to share this partial view in other pages/areas we could have created it under the shared folder.*@
+@model OdeToFood.Data.Models.Restaurant
+
+@*???These classes are similar to CSS. This partial view will now display each Restarants name along with the related actions.*@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">@Model.Name</h2>
+    </div>
+    <div class="panel-body">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = Model.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+    </div>
+</div>
+

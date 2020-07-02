@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Index";
+    //??? You can set your own layout page like so
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
@@ -9,6 +11,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@*??? Here we are passing the model to a partial view to display it as per its own definition.*@
+@foreach (var item in Model)
+{ 
+    @Html.Partial("_RestaurantSummary", item)
+}
+
+
+@*???We can still show the restaurants and related actions again as part of the original view.*@
 <table class="table">
     <tr>
         <th>
@@ -31,3 +42,8 @@
 }
 
 </table>
+
+@*??? Adding a custom footer that will be applied to the RenderSection footer in default layout view. *@
+@section footer{
+    <div>This is a custom footer.</div>
+    }

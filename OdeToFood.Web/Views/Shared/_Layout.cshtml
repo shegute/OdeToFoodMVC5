@@ -30,10 +30,20 @@
         </div>
     </div>
     <div class="container body-content">
+        @*??? This will check the tempdata datastruture and show any messages that have been populated from other views/requests
+        The value in this datastructure will also be overwritten once the page is refereshed/another request is sent.*@
+        @if (TempData["Message"] != null)
+        {<div class="alert alert-info">@TempData["Message"] </div>}
+
+    @*??? This is where the content from any child cshtml views that refrence this default master view
+    will be rendered*@
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            @*??? You can add additional sections that you want to be rendered from the referencing child views
+            by adding a rendersection like so and adding corresponding content in the referencing view*@
+            @RenderSection("footer", required: false)
         </footer>
     </div>
 

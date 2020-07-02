@@ -83,6 +83,8 @@ namespace OdeToFood.Web.Controllers
             {
 
                 db.Update(restaurant);
+                //??? Passing data accross requests. This will be accessible on the next page that comes up.
+                TempData["Message"] = "You have saved the restaurant!";
                 return RedirectToAction("Details", new { id = restaurant.Id });
             }
             return View(restaurant);
